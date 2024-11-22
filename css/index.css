@@ -92,11 +92,11 @@ header .nav-link:hover {
 /*start hero*/
 #Hero {
   min-height: 100vh;
-  background-image: url("../images/Ellipse1.png"), url("../images/Ellipse2.png");
+  /* background-image: url("../images/Ellipse1.png"), url("../images/Ellipse2.png");
   background-repeat: no-repeat, no-repeat;
   background-size: 35%, 27%;
   background-position-x: -17%, 111%;
-  background-position-y: 0%, 94%;
+  background-position-y: 0%, 94%; */
 }
 #Hero i {
   color: var(--second-color);
@@ -200,7 +200,7 @@ header .nav-link:hover {
 }
 /*end hero*/
 /*start products & typefaces*/
-#Products {
+/* #Products {
   background-image: url("../images/Group7.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -210,7 +210,7 @@ header .nav-link:hover {
   background-image: url("../images/Group8.png");
   background-repeat: no-repeat;
   background-size: contain;
-}
+} */
 #Products .main,
 #Typefaces .main {
   position: relative;
@@ -270,11 +270,11 @@ section#Offers {
 }
 /*end offers*/
 /*start categories*/
-#Categories {
+/* #Categories {
   background-image: url("../images/Ellipse6.png");
   background-repeat: no-repeat;
   background-size: contain;
-}
+} */
 #Categories img {
   width: 60px;
   background-color: var(--third-color);
@@ -287,7 +287,7 @@ section#Offers {
 #Categories .col-md-4 div {
   display: flex;
   background-color: #555;
-  border: 2px solid var(--second-color);
+  border: 1px solid var(--second-color);
   border-radius: 16px;
   padding: 30px 15px;
   height: 100%;
@@ -352,12 +352,12 @@ section#Offers {
 }
 /*end clients*/
 /*start reviews*/
-#Reviews {
+/* #Reviews {
   background-image: url("../images/Ellipse1.png"), url("../images/Ellipse6.png");
   background-repeat: no-repeat, no-repeat;
   background-size: 38%, 38%;
   background-position: left center, right center;
-}
+} */
 #Reviews .swiper .review-card img {
   width: 50px;
   height: 50px;
@@ -375,19 +375,22 @@ section#Offers {
 }
 /*end reviews*/
 /*start brands*/
+#Brands {
+  text-align: center;
+}
 #Brands img {
-  max-width: 150px;
+  max-width: 120px;
   margin: 20px;
   height: auto;
   filter: invert(100%) brightness(200%);
 }
 /*end brands*/
 /*start contact*/
-#Contact {
+/* #Contact {
   background-image: url("../images/Group6.png");
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
 #Contact h2 {
   font-weight: bold;
   font-size: 4em;

@@ -15,10 +15,10 @@ body {
   overflow-x: hidden;
   color: var(--fourth-color);
   min-height: 100vh;
-  background-color: var(--first-color) !important;
+  /* background-color: var(--first-color) !important;
   background-image: url("../images/login.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
 i {
   font-family: "Font Awesome 6 Free" !important;
