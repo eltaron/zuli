@@ -17,7 +17,7 @@ const swiper = new Swiper('.mySwiper', {
         640: {
         slidesPerView: 1, // 1 slide on small screens
         },
-        768: {
+        800: {
         slidesPerView: 2, // 2 slides on medium screens
         },
         1024: {
