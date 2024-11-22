@@ -1,0 +1,72 @@
+/*start header*/
+/*end header*/
+/*start hero*/
+.news-ticker {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 10px 0;
+  position: relative;
+}
+.ticker-wrapper {
+  display: flex;
+  gap: 50px;
+  animation: ticker-scroll 15s linear infinite;
+  white-space: nowrap;
+}
+.ticker-item {
+  display: flex;
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+  white-space: nowrap;
+}
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+/*end hero*/
+/*start products & typefaces*/
+/*end products & typefaces*/
+/*start offers*/
+/*end offers*/
+/*start categories*/
+/*end categories*/
+/*start clients*/
+/*end clients*/
+/*start reviews*/
+.swiper {
+  width: 100%;
+  padding: 20px 0;
+}
+.review-card {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f9f9f9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.review-card p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+.review-card h4 {
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+}
+/*end reviews*/
+/*start brands*/
+/*end brands*/
+/*start contact*/
+/*end contact*/
+/*start footer*/
+/*end footer*/
