@@ -21,7 +21,7 @@ const swiper = new Swiper('.mySwiper', {
         slidesPerView: 2, // 2 slides on medium screens
         },
         1024: {
-        slidesPerView: 4, // 3 slides on large screens
+        slidesPerView: 3, // 3 slides on large screens
         },
     },
 });
