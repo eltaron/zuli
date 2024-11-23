@@ -1,5 +1,5 @@
 :root {
-  --first-color: #201f1f;
+  --first-color: #000;
   --second-color: #ad2525;
   --third-color: #9b9b9b;
   --fourth-color: #ffffff;
@@ -16,8 +16,12 @@ body {
   color: var(--fourth-color);
   background-color: var(--first-color) !important;
 }
-i {
+.fa-solid {
   font-family: "Font Awesome 6 Free" !important;
+}
+.fa-brands,
+.fab {
+  font-family: "Font Awesome 6 Brands" !important;
 }
 a {
   text-decoration: none !important;
@@ -71,7 +75,7 @@ header {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: #201f1fcf;
+  background-color: #00000099;
   z-index: 9999;
 }
 header .navbar-brand img {
@@ -217,29 +221,49 @@ header .nav-link:hover {
   padding: 0 !important;
   border-radius: 30px;
 }
-#Products h2,
+#Products .swiper,
+#Typefaces .swiper {
+  overflow-x: hidden !important;
+  background-color: #bfbfbf10;
+  padding: 27px 23px 15px;
+  border-radius: 50px;
+}
+/* #Products h2,
 #Typefaces h2 {
   width: 90%;
+} */
+#Products .main,
+#Typefaces .main {
+  border: 1px solid var(--second-color);
+  border-radius: 30px;
 }
 #Products .main img,
 #Typefaces .main img {
   width: 100%;
-  border-radius: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  /* border-radius: 30px; */
 }
 #Products .overlay,
 #Typefaces .overlay {
-  border-radius: 30px;
+  /* border-radius: 30px;
   position: absolute;
   bottom: 0;
   background-color: #bfbfbf10;
   width: 100%;
-  height: 100%;
-  padding: 7px 12px;
-  display: flex;
-  align-items: end;
-  border: 1px solid var(--second-color);
+  height: 100%; */
+  padding: 15px 12px;
+  /* display: flex;
+  align-items: end; */
+  text-align: center;
+  /* border: 1px solid var(--second-color); */
 }
-
+#Products .overlay h3,
+#Typefaces .overlay h3,
+#Products .overlay p,
+#Typefaces .overlay p {
+  margin-bottom: 3px !important;
+}
 /*end products & typefaces*/
 /*start offers*/
 section#Offers {
@@ -377,8 +401,9 @@ section#Offers {
 }
 /*end reviews*/
 /*start brands*/
-#Brands {
+section#Brands {
   text-align: center;
+  padding: 1em 0 !important;
 }
 #Brands img {
   max-width: 120px;
