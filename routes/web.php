@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Web\AuthController;
+use App\Http\Controllers\Web\CartController;
+use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\SocialAuthController;
+use App\Http\Controllers\Web\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,20 +34,15 @@ Route::group(['middleware' => 'Lang'], function () {
         Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('password.reset');
         Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 
-        // Email Verification
-        Route::get('/email/verify', [AuthController::class, 'emailVerificationNotice'])->middleware('auth')->name('verification.notice');
-        Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])->middleware(['auth', 'signed'])->name('verification.verify');
-        Route::post('/email/resend', [AuthController::class, 'resendEmailVerification'])->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
-
-        // Social Login
-        Route::get('/login/{provider}', [SocialAuthController::class, 'redirect'])->name('social.login');
-        Route::get('/login/{provider}/callback', [SocialAuthController::class, 'callback']);
-
         // Language
         Route::get('lang/{lang}', function ($lang) {
             session()->put('lang', $lang);
             return back()->with('success', 'language change successful');
         });
+
+        Route::get('', [HomeController::class, 'index'])->name('home');
+        Route::get('cart', [CartController::class, 'index'])->name('home');
+        Route::get('wishlist', [WishlistController::class, 'index'])->name('home');
         Route::middleware('auth')->group(function () {
             Route::get('/dashboard', function () {
                 return view('dashboard');

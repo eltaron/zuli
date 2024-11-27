@@ -1,0 +1,126 @@
+:root {
+    --first-color: #000;
+    --second-color: #ad2525;
+    --third-color: #9b9b9b;
+    --fourth-color: #ffffff;
+}
+body,
+* {
+    margin: 0;
+    padding: 0;
+    font-family: CustomFont, sans-serif !important;
+    color: var(--fourth-color);
+}
+body {
+    overflow-x: hidden;
+    color: var(--fourth-color);
+    min-height: 100vh;
+    background-color: var(--first-color) !important;
+
+    /* background-image: url("../images/login.png");
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+i {
+    font-family: "Font Awesome 6 Free" !important;
+}
+a {
+    text-decoration: none !important;
+    color: var(--fourth-color) !important;
+    transition: 0.5s ease-in-out;
+}
+a:hover {
+    color: var(--second-color) !important;
+}
+ul {
+    list-style: none;
+    padding: 0 !important;
+}
+@font-face {
+    font-family: "CustomFont"; /* Name to reference in CSS */
+    src: url("./fonts/Helvetica.ttf") format("truetype"); /* Truetype fallback */
+}
+body::-webkit-scrollbar,
+.mainbg::-webkit-scrollbar {
+    background-color: transparent;
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb,
+.mainbg::-webkit-scrollbar-thumb {
+    background: var(--second-color);
+    border-radius: 30px;
+}
+section:not(#Hero) {
+    padding: 6em 0 !important;
+}
+
+.btn-light {
+    color: var(--second-color) !important;
+    transition: 0.5s ease-in-out !important;
+    font-weight: bold !important;
+}
+.btn-light:hover {
+    color: var(--fourth-color) !important;
+    background-color: var(--second-color) !important;
+    border-color: var(--second-color) !important;
+}
+.main-title {
+    font-size: 3em;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+section p {
+    color: var(--third-color);
+    margin-bottom: 10px;
+}
+h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--fourth-color);
+    text-stroke: 2px var(--fourth-color);
+    font-family: CustomFont, sans-serif;
+    margin-top: 30px !important;
+}
+main .row {
+    min-height: 100vh;
+}
+form .form-control {
+    background-color: transparent;
+    border: 2px solid var(--third-color);
+    padding: 10px 10px;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+form .form-control::placeholder {
+    color: var(--fourth-color);
+}
+ul {
+    text-align: center;
+}
+ul li {
+    display: inline-block;
+    padding: 3px 10px;
+}
+p {
+    color: var(--third-color);
+}
+.mainbg {
+    background-color: #bfbfbf10;
+    padding: 70px 40px !important;
+    border-radius: 20px;
+    border: 0.2px solid var(--fourth-color);
+    position: relative;
+    top: 0;
+}
+.register {
+    padding: 30px !important;
+}
+@media (max-width: 768px) {
+    .mainbg {
+        top: -90px;
+        border: none;
+    }
+}
