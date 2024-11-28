@@ -42,7 +42,7 @@ class ClientController extends Controller
     {
         $request->validate([
             'logo' => 'required|file|mimes:jpeg,png,jpg,gif|max:2048',
-            'Category' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
         ]);
         $logoPath = $request->file('logo')->store('clients', 'public');
         Client::create([

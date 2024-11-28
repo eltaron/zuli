@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\HomeController;
+use App\Http\Controllers\Web\ProductController;
 use App\Http\Controllers\Web\SocialAuthController;
 use App\Http\Controllers\Web\WishlistController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,8 @@ Route::group(['middleware' => 'Lang'], function () {
         });
 
         Route::get('', [HomeController::class, 'index'])->name('home');
+        Route::post("contact", [HomeController::class, 'contact']);
+        Route::get('/top-products', [ProductController::class, 'showTopProducts'])->name('top.products');
         Route::get('cart', [CartController::class, 'index'])->name('home');
         Route::get('wishlist', [WishlistController::class, 'index'])->name('home');
         Route::middleware('auth')->group(function () {

@@ -68,76 +68,32 @@
                 <h2 class="main-title text-center">Top Products</h2>
                 <div class="swiper mySwiper ">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image1.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$</h4>
+                        @foreach($topproducts as $pp)
+                            <div class="swiper-slide mb-3">
+                                <div class="main">
+                                    <img src="{{ env('APP_URL') . '/storage/' . $pp->image }}" alt=""
+                                        loading="lazy" onclick="window.location.href=`<?php echo htmlspecialchars(url('/product/show/'.$pp->id)); ?>`">
+                                    <div class="overlay">
+                                        <h3>{{$pp->title}}</h3>
+                                        <p>{{$pp->description}}</p>
+                                        @if(isset($pp->offer[0]))
+                                            @foreach($pp->offer as $v )
+                                            
+                                                @if(strtotime($v->end_at) > strtotime(date('Y-m-d')))
+                                                    <h4>{{$v->new_price}}$ <sub class="text-danger"><del>{{$pp->price}}$</del></sub></h4>
+                                                @endif
+                                            @endforeach
+                                            @else
+                                            <h4>{{$pp->price}}$</h4>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image2.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image3.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image1.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image2.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image3.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$</h4>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href="" class="btn btn-light text-center mt-4">View More</a>
+                    <a href="{{url('/product/top')}}" class="btn btn-light text-center mt-4">View More</a>
                 </div>
             </div>
         </section>
@@ -169,76 +125,23 @@
                 <h2 class="main-title text-center">Sales</h2>
                 <div class="swiper mySwiper ">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image1.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$ <sub class="text-danger"><del>300$</del></sub></h4>
+                        @foreach($offers as $ff)
+                            <div class="swiper-slide mb-3">
+                                <div class="main">
+                                    <img src="{{ env('APP_URL') . '/storage/' . $ff->product->image }}" alt=""
+                                        loading="lazy" onclick="window.location.href=`<?php echo htmlspecialchars(url('/product/show/'.$ff->product->id)); ?>`">
+                                    <div class="overlay">
+                                        <h3>{{$ff->product->title}}</h3>
+                                        <p>{{$ff->product->description}}</p>
+                                        <h4>{{$ff->new_price}}$ <sub class="text-danger"><del>{{$ff->product->price}}$</del></sub></h4>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image2.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$ <sub class="text-danger"><del>300$</del></sub></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image3.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$ <sub class="text-danger"><del>300$</del></sub></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image1.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$ <sub class="text-danger"><del>300$</del></sub></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image2.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$ <sub class="text-danger"><del>300$</del></sub></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image3.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$ <sub class="text-danger"><del>300$</del></sub></h4>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href="" class="btn btn-light text-center mt-4">View More</a>
+                    <a href="{{url('/offers/')}}" class="btn btn-light text-center mt-4">View More</a>
                 </div>
             </div>
         </section>
@@ -247,76 +150,32 @@
                 <h2 class="main-title text-center">Mockups</h2>
                 <div class="swiper mySwiper ">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image1.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$</h4>
+                        @foreach($poroducts as $po)
+                            <div class="swiper-slide mb-3">
+                                <div class="main">
+                                    <img src="{{ env('APP_URL') . '/storage/' . $po->image }}" alt=""
+                                        loading="lazy" onclick="window.location.href=`<?php echo htmlspecialchars(url('/product/show/'.$po->id)); ?>`">
+                                    <div class="overlay">
+                                        <h3>{{$po->title}}</h3>
+                                        <p>{{$po->description}}</p>
+                                        @if(isset($po->offer[0]))
+                                            @foreach($po->offer as $v )
+                                            
+                                                @if(strtotime($v->end_at) > strtotime(date('Y-m-d')))
+                                                    <h4>{{$v->new_price}}$ <sub class="text-danger"><del>{{$po->price}}$</del></sub></h4>
+                                                @endif
+                                            @endforeach
+                                            @else
+                                            <h4>{{$po->price}}$</h4>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image2.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image3.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image1.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image2.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mb-3">
-                            <div class="main">
-                                <img src="{{ env('APP_URL') }}/web_files/images/projects/image3.jpg" alt=""
-                                    loading="lazy">
-                                <div class="overlay">
-                                    <h3>Product</h3>
-                                    <p>product details</p>
-                                    <h4>250$</h4>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href="" class="btn btn-light text-center mt-4">View More</a>
+                    <a href="{{url('/products')}}" class="btn btn-light text-center mt-4">View More</a>
                 </div>
             </div>
         </section>
@@ -324,37 +183,15 @@
             <div class="container">
                 <h2 class="main-title text-center">Categories</h2>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div>
-                            <img src="{{ env('APP_URL') }}/web_files/images/brands/font.png" class="me-3">
-                            <h4>Typefaces</h4>
+                    @foreach($categories as $ss)
+                        <div class="col-md-4" onclick="window.location.href=`<?php echo htmlspecialchars(url('/category/show/'.$ss->id)); ?>`">
+                            <div>
+                                <img src="{{ env('APP_URL') . '/storage/' . $ss->logo }}" class="me-3">
+                                <h4>{{$ss->title}}</h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div>
-                            <img src="{{ env('APP_URL') }}/web_files/images/brands/font.png" class="me-3">
-                            <h4>Typefaces</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div>
-                            <img src="{{ env('APP_URL') }}/web_files/images/brands/font.png" class="me-3">
-                            <h4>Typefaces</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div>
-                            <img src="{{ env('APP_URL') }}/web_files/images/brands/font.png" class="me-3">
-                            <h4>Typefaces</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div>
-                            <img src="{{ env('APP_URL') }}/web_files/images/brands/font.png" class="me-3">
-                            <h4>Typefaces</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
+                    @endforeach
+                    <div class="col-md-4" onclick="window.location.href=`<?php echo htmlspecialchars(url('/category')); ?>`">
                         <div class="justify-content-center">
                             <h2>
                                 <i class="fa-solid fa-plus"></i>
@@ -368,20 +205,10 @@
         <section id="Brands">
             <h2 class="main-title text-center">Top Clients</h2>
             <div class="d-flex flex-wrap align-items-center justify-content-center">
-                <img src="{{ env('APP_URL') }}/web_files/images/brands/cps-removebg-preview.png" alt=""
+                @foreach($clients as $cc)
+                <img src="{{ env('APP_URL') . '/storage/' . $cc->logo }}" alt=""
                     loading="lazy">
-                <img src="{{ env('APP_URL') }}/web_files/images/brands/golf-removebg-preview.png" alt=""
-                    loading="lazy">
-                <img src="{{ env('APP_URL') }}/web_files/images/brands/mtv-removebg-preview.png" alt=""
-                    loading="lazy">
-                <img src="{{ env('APP_URL') }}/web_files/images/brands/netflix-removebg-preview.png" alt=""
-                    loading="lazy">
-                <img src="{{ env('APP_URL') }}/web_files/images/brands/parmount-removebg-preview.png" alt=""
-                    loading="lazy">
-                <img src="{{ env('APP_URL') }}/web_files/images/brands/puma-removebg-preview.png" alt=""
-                    loading="lazy">
-                <img src="{{ env('APP_URL') }}/web_files/images/brands/sony-removebg-preview.png" alt=""
-                    loading="lazy">
+                @endforeach
             </div>
         </section>
         <section id="Contact">
@@ -389,25 +216,26 @@
                 <h5 class="text-center">Contact Us</h5>
                 <h2 class="main-title text-center">Let's Work Together</h2>
                 <div class="container">
-                    <form action="">
+                    <form action="{{url('contact')}}" method="POST">
+                    @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Name">
+                                    <input type="text" class="form-control" placeholder="Name" name="name">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email">
+                                    <input type="email" class="form-control" placeholder="Email" name="email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="phone">
+                                    <input type="text" class="form-control" placeholder="phone" name="phone">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <textarea class="form-control" placeholder="Message"></textarea>
+                                    <textarea class="form-control" placeholder="Message" name="message"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-light"> Send
+                                    <button class="btn btn-light" type="submit"> Send
                                         Message</button>
                                 </div>
                             </div>
