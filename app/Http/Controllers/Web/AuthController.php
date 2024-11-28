@@ -50,18 +50,20 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:8',
+            'phone' => 'required',
+            'password' => 'required|min:6',
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'username' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'password' => bcrypt($request->password),
         ]);
 
         Auth::login($user);
 
-        return redirect()->route('verification.notice');
+        return redirect(url('dashboard'));
     }
     public function sendResetLink(Request $request)
     {

@@ -13,12 +13,13 @@
                 <div class="col-md-6 mainbg col-lg-5">
                     <h2>Sign in</h2>
                     <p>Glad you are back.</p>
-                    <form action="">
+                    <form action="{{ url('login') }}" method="POST">
+                        @csrf
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input type="email" name="email" class="form-control" placeholder="Email">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="password">
+                            <input type="password" name="password" class="form-control" placeholder="password">
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="rememberMe"
@@ -27,7 +28,7 @@
                                 Remember me
                             </label>
                         </div>
-                        <button class="btn btn-danger w-100 my-4">Sign in</button>
+                        <button type="submit" class="btn btn-danger w-100 my-4">Sign in</button>
                     </form>
                     <a href="#" class="text-center d-block">Forget Password ? </a>
                     <h5 class="mt-3 text-center">Don't have account <a href="#" class="text-danger">Sign up now...</a>
