@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
+            $table->enum('role', ['user', 'admin'])->default('user');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

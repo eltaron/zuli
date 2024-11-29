@@ -24,19 +24,31 @@ class HomePageDetailController extends Controller
                 'type' => 'file',
                 'name' => 'logo',
                 'label' => 'Enter service logo',
-                'required' => true
+                'required' => 'required'
             ],
             [
                 'type' => 'text',
                 'name' => 'title',
                 'label' => 'Enter service title',
-                'required' => true
+                'required' => 'required'
+            ],
+            [
+                'type' => 'number',
+                'name' => 'title',
+                'label' => 'Enter service title',
+                'required' => ''
+            ],
+            [
+                'type' => 'number',
+                'name' => 'title',
+                'label' => 'Enter service title',
+                'required' => ''
             ],
             [
                 'type' => 'textarea',
                 'name' => 'description',
                 'label' => 'Enter service description',
-                'required' => false
+                'required' => ''
             ]
         ];
 
@@ -48,9 +60,11 @@ class HomePageDetailController extends Controller
         // Validate the incoming data
         $request->validate([
             'slogan' => 'nullable|string|max:1000',  // validate slogan as a text
-            'facebook' => 'nullable|url',
-            'instgram' => 'nullable|url',
-            'behance' => 'nullable|url',
+            'facebook' => 'nullable',
+            'instgram' => 'nullable',
+            'behance' => 'nullable',
+            'days_of_offer' => 'nullable',
+            'descount' => 'nullable',
         ]);
 
         // Fetch or create the settings record
@@ -63,7 +77,8 @@ class HomePageDetailController extends Controller
         $settings->facebook = $request->input('facebook');
         $settings->instgram = $request->input('instgram');
         $settings->behance = $request->input('behance');
-
+        $settings->days_of_offer = $request->input('days_of_offer');
+        $settings->descount = $request->input('descount');
         // Save the settings to the database
         $settings->save();
 

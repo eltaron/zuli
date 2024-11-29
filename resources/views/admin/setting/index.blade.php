@@ -22,7 +22,7 @@
 
                             <div class="mb-3">
                                 <label for="facebook" class="form-label">Facebook URL</label>
-                                <input type="url" class="form-control" id="facebook" name="facebook"
+                                <input type="text" class="form-control" id="facebook" name="facebook"
                                     value="{{ old('facebook', $settings->facebook ?? '') }}">
                                 @error('facebook')
                                     <div class="text-danger">{{ $message }}</div>
@@ -31,7 +31,7 @@
 
                             <div class="mb-3">
                                 <label for="instgram" class="form-label">Instagram URL</label>
-                                <input type="url" class="form-control" id="instgram" name="instgram"
+                                <input type="text" class="form-control" id="instgram" name="instgram"
                                     value="{{ old('instgram', $settings->instgram ?? '') }}">
                                 @error('instgram')
                                     <div class="text-danger">{{ $message }}</div>
@@ -40,9 +40,27 @@
 
                             <div class="mb-3">
                                 <label for="behance" class="form-label">Behance URL</label>
-                                <input type="url" class="form-control" id="behance" name="behance"
+                                <input type="text" class="form-control" id="behance" name="behance"
                                     value="{{ old('behance', $settings->behance ?? '') }}">
                                 @error('behance')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="days_of_offer" class="form-label">days of offer</label>
+                                <input type="number" class="form-control" id="days_of_offer" name="days_of_offer"
+                                    value="{{ old('days_of_offer', $settings->days_of_offer ?? '') }}">
+                                @error('instgram')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="descount" class="form-label">discount</label>
+                                <input type="number" class="form-control" id="descount" name="descount"
+                                    value="{{ old('descount', $settings->descount ?? '') }}">
+                                @error('instgram')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>

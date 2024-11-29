@@ -17,6 +17,19 @@
     <meta property="og:type" content="website" />
     <link rel="stylesheet" href="{{ env('APP_URL') }}/web_files/css/auth.css">
     <link rel="stylesheet" href="{{ env('APP_URL') }}/web_files/vendor/bootstrap-5.1.3/css/bootstrap.min.css">
+    <style>
+        .alert {
+            position: fixed;
+            bottom: 11px;
+            left: 13px;
+            min-width: 24%;
+        }
+
+        .alert strong,
+        .alert p {
+            color: #dc3545
+        }
+    </style>
 </head>
 
 <body>

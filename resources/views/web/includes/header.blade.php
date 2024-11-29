@@ -11,22 +11,43 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link {{ Request::is('home*') ? 'active' : '' }}" aria-current="page"
+                            href="{{ url('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Products</a>
+                        <a class="nav-link {{ Request::is('products*') ? 'active' : '' }}"
+                            href="{{ url('products') }}">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
+                        <a class="nav-link {{ Request::is('categories*') ? 'active' : '' }}"
+                            href="{{ url('categories') }}">Categories</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Top Clients</a>
+                        <a class="nav-link" href="#Contact">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
+                    @auth
+                        @if (Auth::user()->orders->count() > 0 && Auth::user()->role != 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('orders*') ? 'active' : '' }}"
+                                    href="{{ url('orders') }}">Orders</a>
+                            </li>
+                        @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('logout') }}">Logout</a>
+                        </li>
+                    @endauth
                 </ul>
-                <a href="#" class="btn btn-light">Get Started</a>
+                @auth
+                    @if (Auth::user()->role == 'admin')
+                        <a href="{{ aurl('') }}" class="btn btn-light">Admin Panel</a>
+                    @else
+                        <a href="{{ url('wishlist') }}" class="mx-2 btn btn-light"><i class="fa-solid fa-heart "></i></a>
+                        <a href="{{ url('cart') }}" class="btn btn-light">Cart</a>
+                    @endif
+                @else
+                    <a href="{{ url('login') }}" class="btn btn-light">Get Started</a>
+                @endauth
             </div>
         </div>
     </nav>

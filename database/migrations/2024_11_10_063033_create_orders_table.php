@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->uuid('id')->primary(); // UUID primary key
             $table->uuid('user_id'); // Foreign key to 'users' table
-            $table->uuid('payment_method_id'); // Foreign key to 'payment_methods' table
+            $table->uuid('payment_method_id')->nullable(); // Foreign key to 'payment_methods' table
             $table->decimal('tax', 8, 2); // Tax amount
             $table->decimal('total', 8, 2); // Total order amount
             $table->string('coupon')->nullable(); // Coupon code applied (nullable)

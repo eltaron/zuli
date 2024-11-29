@@ -26,9 +26,9 @@
             <div class="col-md-6 col-lg-3">
                 <h3>Contact</h3>
                 <ul>
-                    <li><a href=""><i class="fa-brands fa-facebook"></i> Zuli Assets</a></li>
-                    <li><a href=""><i class="fa-brands fa-instagram"></i> Zuli_design</a></li>
-                    <li><a href=""><i class="fa-brands fa-behance"></i> Zuli designs</a></li>
+                    <li><a href="{{ home()?->facebook }}"><i class="fa-brands fa-facebook"></i> Zuli Assets</a></li>
+                    <li><a href="{{ home()?->instagram }}"><i class="fa-brands fa-instagram"></i> Zuli_design</a></li>
+                    <li><a href="{{ home()?->behance }}"><i class="fa-brands fa-behance"></i> Zuli designs</a></li>
                 </ul>
             </div>
         </div>
@@ -37,3 +37,4 @@
         </div>
     </div>
 </footer>
+<div id="alert-container"></div>

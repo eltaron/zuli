@@ -17,7 +17,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Product</th>
-                                        <th>Description</th>
+                                        <th>Is Top</th>
+                                        <th>Category</th>
                                         <th>Price</th>
                                         <th>Action</th>
                                     </tr>
@@ -31,7 +32,9 @@
                                                     height="50" class="rounded-circle" alt="" loading="lazy">
                                                 {{ $item->title }}
                                             </td>
-                                            <td>{{ \Illuminate\Support\Str::limit($item->description, 50, '...') }}</td>
+                                            <td>{{ $item->is_top }}</td>
+                                            <td>{{ $item->category->title }}</td>
+                                            {{-- <td>{{ \Illuminate\Support\Str::limit($item->description, 50, '...') }}</td> --}}
                                             <td>{{ $item->price }}</td>
                                             <td>
                                                 <button class="btn btn-danger" data-bs-toggle="modal"

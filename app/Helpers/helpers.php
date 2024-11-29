@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\HomePageDetail;
+
 function GetLanguage()
 {
     return app()->getLocale();
@@ -24,6 +27,12 @@ if (!function_exists('aurl')) {
     function aurl($url)
     {
         return url('/admin/' . $url);
+    }
+}
+if (!function_exists('home')) {
+    function home()
+    {
+        return HomePageDetail::first();
     }
 }
 if (!function_exists('lang')) {

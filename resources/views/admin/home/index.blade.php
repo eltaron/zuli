@@ -281,7 +281,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Product</th>
-                                        <th>Description</th>
+                                        <th>Is Top</th>
+                                        <th>Category</th>
                                         <th>Price</th>
                                     </tr>
                                 </thead>
@@ -295,7 +296,8 @@
                                                     loading="lazy">
                                                 {{ $item->title }}
                                             </td>
-                                            <td>{{ \Illuminate\Support\Str::limit($item->description, 50, '...') }}</td>
+                                            <td>{{ $item->is_top }}</td>
+                                            <td>{{ $item->category->title }}</td>
                                             <td>{{ $item->price }}</td>
                                         </tr>
                                     @endforeach

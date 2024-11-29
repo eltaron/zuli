@@ -15,13 +15,27 @@
     <meta name="MobileOptimized" content="320" />
     <meta property="og:title" content="zuli" />
     <meta property="og:type" content="website" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ env('APP_URL') }}/web_files/css/style.css">
     <link rel="stylesheet" href="{{ env('APP_URL') }}/web_files/vendor/bootstrap-5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ env('APP_URL') }}/web_files/vendor/fontawesome-free-6.7.1/css/fontawesome.min.css">
     <link rel="stylesheet" href="{{ env('APP_URL') }}/web_files/vendor/fontawesome-free-6.7.1/css/solid.min.css">
     <link rel="stylesheet" href="{{ env('APP_URL') }}/web_files/vendor/fontawesome-free-6.7.1/css/brands.min.css">
     <link rel="stylesheet" href="{{ env('APP_URL') }}/web_files/vendor/swiper/swiper-bundle.min.css">
+    <style>
+        .alert {
+            position: fixed;
+            bottom: 11px;
+            left: 13px;
+            min-width: 24%;
+            z-index: 999999;
+        }
 
+        .alert strong,
+        .alert p {
+            color: #dc3545
+        }
+    </style>
     @stack('styles')
 </head>
 

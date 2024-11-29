@@ -27,11 +27,14 @@
                                             <td>{{ $i + 1 }}</td>
                                             <td>
                                                 <img src="{{ env('APP_URL') . '/storage/' . $item->logo }}" width="50"
-                                                    height="50" class="rounded-circle" alt="" loading="lazy">
+                                                    height="50" alt="" loading="lazy">
                                                 {{ $item->title }}
                                             </td>
                                             <td>{{ $item->status }}</td>
                                             <td>
+                                                <button
+                                                    onclick="window.location.href=`{{ aurl('categories/') . '/' . $item->id }}`"
+                                                    class="btn btn-light">Products</button>
                                                 <button class="btn btn-danger" data-bs-toggle="modal"
                                                     onclick="deleteItem(`{{ $item->id }}`)"
                                                     data-bs-target="#delete">Delete

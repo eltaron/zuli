@@ -4,7 +4,7 @@
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
-            <a href="{{ url('admin') }}" class="navbar-brand m-0">
+            <a href="{{ url('') }}" class="navbar-brand m-0">
                 <img src="{{ env('APP_URL') . asset('admin_files/assets/img/logo.png') }}" class="navbar-brand-img h-100"
                     alt="main_logo">
                 <span class="ms-1 font-weight-bold">Dashboard</span>
@@ -34,6 +34,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link  {{ Request::is('admin/product/top*') ? 'active' : '' }}"
+                        href="{{ aurl('product/top') }}">
+                        <div
+                            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-bag-17 text-lg opacity-10" aria-hidden="true"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Top Products</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link  {{ Request::is('admin/products*') ? 'active' : '' }}"
                         href="{{ aurl('products') }}">
                         <div
@@ -44,7 +54,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  {{ Request::is('admin/offers*') ? 'active' : '' }}" href="{{ aurl('offers') }}">
+                    <a class="nav-link  {{ Request::is('admin/offers*') ? 'active' : '' }}"
+                        href="{{ aurl('offers') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>

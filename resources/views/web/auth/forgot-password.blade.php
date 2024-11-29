@@ -12,8 +12,9 @@
                 <div class="col-md-6 mainbg col-lg-5 register">
                     <h2>Send Reset Password</h2>
                     <form action="{{ route('password.request') }}" method="POST">
+                        @csrf
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input type="email" name="email" class="form-control" placeholder="Email">
                         </div>
                         <button class="btn btn-danger w-100 my-4">Send Reset Link</button>
                     </form>

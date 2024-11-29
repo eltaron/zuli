@@ -29,13 +29,7 @@ class ProductController extends Controller
                 'label' => 'Enter product main image',
                 'required' => 'required'
             ],
-            [
-                'type' => 'file',
-                'name' => 'images',
-                'multible' => 'multiple',
-                'label' => 'Enter product images',
-                'required' => 'required'
-            ],
+
             [
                 'type' => 'text',
                 'name' => 'title',
@@ -77,7 +71,63 @@ class ProductController extends Controller
         ];
         return view('admin.product.index', compact('title', 'add_url', 'edit_url', 'delete_url', 'data', 'inputs'));
     }
+    public function top()
+    {
+        $title = 'Top Products';
+        $add_url = 'products/store';
+        $edit_url = 'products/update';
+        $delete_url = 'products/destroy';
+        $data = Product::where('is_top', 'yes')->latest()->get();
+        $inputs = [
+            [
+                'type' => 'file',
+                'name' => 'image',
+                'multible' => '',
+                'label' => 'Enter product main image',
+                'required' => 'required'
+            ],
 
+            [
+                'type' => 'text',
+                'name' => 'title',
+                'label' => 'Enter product title',
+                'required' => 'required'
+            ],
+            [
+                'type' => 'textarea',
+                'name' => 'description',
+                'label' => 'Enter product description',
+                'required' => ''
+            ],
+            [
+                'type' => 'textarea',
+                'name' => 'url',
+                'label' => 'Enter download url',
+                'required' => 'required'
+            ],
+            [
+                'type' => 'number',
+                'name' => 'price',
+                'label' => 'Enter product price',
+                'required' => 'required'
+            ],
+            [
+                'type' => 'radio',
+                'name' => 'is_top',
+                'label' => 'Is product of top products ?',
+                'values' => 'yes,no',
+                'required' => 'required'
+            ],
+            [
+                'type' => 'select',
+                'name' => 'category_id',
+                'label' => 'choose category',
+                'required' => 'required',
+                'values' => Category::latest()->get()->pluck('title', 'id')
+            ]
+        ];
+        return view('admin.product.index', compact('title', 'add_url', 'edit_url', 'delete_url', 'data', 'inputs'));
+    }
     public function store(Request $request)
     {
         $request->validate([

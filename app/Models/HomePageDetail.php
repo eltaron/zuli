@@ -25,6 +25,8 @@ class HomePageDetail extends Model
         'facebook',
         'instgram',
         'behance',
+        'days_of_offer',
+        'descount'
     ];
     protected $appends = [
         'time_ago'

@@ -35,6 +35,22 @@
             border: 1px solid #fff !important;
             text-align: center !important;
         }
+
+        .dt-length,
+        .dt-search {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .dt-search input {
+            width: 250px;
+            margin: 0 10px
+        }
+
+        .dt-length select {
+            width: 57px;
+            margin: 0 10px
+        }
     </style>
     @stack('style')
 </head>

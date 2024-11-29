@@ -11,10 +11,13 @@
                 </div>
                 <div class="col-md-6 mainbg col-lg-5 register">
                     <h2>Reset Password</h2>
-                    <form action="{{ route('password.request') }}" method="POST">
-                        <input type="hidden" name="token" value="{{ $token }}">
+                    <form action="{{ route('password.update') }}" method="POST">
+                        @csrf
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="token" placeholder="Code Number">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" name="password" placeholder="New Password" </div>

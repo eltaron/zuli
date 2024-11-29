@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -43,7 +44,64 @@ class CategoryController extends Controller
         ];
         return view('admin.category.index', compact('title', 'add_url', 'edit_url', 'delete_url', 'data', 'inputs'));
     }
+    public function products($id)
+    {
+        $category = Category::findOrFail($id);
+        $title = 'Products in ' . $category->title;
+        $add_url = 'products/store';
+        $edit_url = 'products/update';
+        $delete_url = 'products/destroy';
+        $data = Product::where('category_id', $id)->latest()->get();
+        $inputs = [
+            [
+                'type' => 'file',
+                'name' => 'image',
+                'multible' => '',
+                'label' => 'Enter product main image',
+                'required' => 'required'
+            ],
 
+            [
+                'type' => 'text',
+                'name' => 'title',
+                'label' => 'Enter product title',
+                'required' => 'required'
+            ],
+            [
+                'type' => 'textarea',
+                'name' => 'description',
+                'label' => 'Enter product description',
+                'required' => ''
+            ],
+            [
+                'type' => 'textarea',
+                'name' => 'url',
+                'label' => 'Enter download url',
+                'required' => 'required'
+            ],
+            [
+                'type' => 'number',
+                'name' => 'price',
+                'label' => 'Enter product price',
+                'required' => 'required'
+            ],
+            [
+                'type' => 'radio',
+                'name' => 'is_top',
+                'label' => 'Is product of top products ?',
+                'values' => 'yes,no',
+                'required' => 'required'
+            ],
+            [
+                'type' => 'select',
+                'name' => 'category_id',
+                'label' => 'choose category',
+                'required' => 'required',
+                'values' => Category::latest()->get()->pluck('title', 'id')
+            ]
+        ];
+        return view('admin.product.index', compact('title', 'add_url', 'edit_url', 'delete_url', 'data', 'inputs'));
+    }
     // Store function
     public function store(Request $request)
     {

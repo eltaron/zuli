@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('facebook')->nullable(); // Twitter link
             $table->string('instgram')->nullable(); // Instagram link
             $table->string('behance')->nullable(); // Snapchat link
+            $table->integer('descount')->default(0);
+            $table->integer('days_of_offer')->default(0);
             $table->timestamps(); // created_at and updated_at
         });
     }

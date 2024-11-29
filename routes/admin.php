@@ -15,14 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'Lang'], function () {
     Route::group(['namespace' => 'Admin'], function () {
-        Route::get('', 'AuthController@index');
-        //Route::middleware('auth')->group(function () {
+        Route::group(['middleware' => 'adminRole'], function () {
+            Route::get('', 'AuthController@index');
             Route::group(['prefix' => 'categories'], function () {
                 Route::get('', 'CategoryController@index');
+                Route::get('/{id}', 'CategoryController@products');
                 Route::post('store', 'CategoryController@store');
                 Route::post('update', 'CategoryController@update');
                 Route::post('destroy', 'CategoryController@destroy');
             });
+            Route::get('product/top', 'ProductController@top');
             Route::group(['prefix' => 'products'], function () {
                 Route::get('', 'ProductController@index');
                 Route::post('store', 'ProductController@store');
@@ -65,6 +67,6 @@ Route::group(['middleware' => 'Lang'], function () {
                 Route::post('destroy', 'ClientController@destroy');
             });
             Route::get('profile', 'AuthController@profile');
-        //});
+        });
     });
 });

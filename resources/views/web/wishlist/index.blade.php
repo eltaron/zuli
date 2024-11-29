@@ -9,54 +9,42 @@
 @endpush
 @section('content')
     <main>
-        <div class="container my-5">
-            <h1 class="text-center mb-4">Wishlist</h1>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <img src="http://localhost/ecommerce/zuli/web_files/images/projects/image2.jpg" class="card-img-top"
-                            alt="Product Image" height="250px">
-                        <div class="card-body">
-                            <h5 class="card-title">Elegant Font</h5>
-                            <p class="card-text">$10.00</p>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-danger btn-sm">Remove</button>
-                                <button class="btn btn-light btn-sm">Add to Cart</button>
+        <section id="Products" class="pt-0">
+            <div class="container mb-5">
+                <h2 class="main-title text-center">Wishlist</h2>
+                <div class="mainbg">
+                    <div class="row">
+                        @forelse ($whishlists as $ff)
+                            <div class="col-md-4 mb-3">
+                                <div class="main">
+                                    <img src="{{ env('APP_URL') . '/storage/' . $ff->product->image }}" alt=""
+                                        loading="lazy" onclick="window.location.href=`<?php echo htmlspecialchars(url('/product/show/' . $ff->product->id)); ?>`">
+                                    <div class="overlay">
+                                        <h3>{{ $ff->product->title }}</h3>
+                                        <p>{{ $ff->product->description }}</p>
+                                        <h4>{{ $ff->new_price }}$ <sub
+                                                class="text-danger"><del>{{ $ff->product->price }}$</del></sub></h4>
+                                        <!-- Wishlist and Cart Buttons -->
+                                        <div class="actions mt-3">
+                                            <button class="btn btn-light add-to-cart" data-id="{{ $ff->product->id }}">Add
+                                                to
+                                                Cart</button>
+                                            <button class="btn btn-outline-light remove-from-wishlist"
+                                                data-id="{{ $ff->product->id }}">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <img src="http://localhost/ecommerce/zuli/web_files/images/projects/image2.jpg" class="card-img-top"
-                            alt="Product Image" height="250px">
-                        <div class="card-body">
-                            <h5 class="card-title">Elegant Font</h5>
-                            <p class="card-text">$10.00</p>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-danger btn-sm">Remove</button>
-                                <button class="btn btn-light btn-sm">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <img src="http://localhost/ecommerce/zuli/web_files/images/projects/image2.jpg" class="card-img-top"
-                            alt="Product Image" height="250px">
-                        <div class="card-body">
-                            <h5 class="card-title">Elegant Font</h5>
-                            <p class="card-text">$10.00</p>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-danger btn-sm">Remove</button>
-                                <button class="btn btn-light btn-sm">Add to Cart</button>
-                            </div>
-                        </div>
+                        @empty
+                            <h2 class="text-center text-light">No Products Found</h2>
+                        @endforelse
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
     </main>
 @endsection
 @push('scripts')
+    <script src="{{ env('APP_URL') }}/web_files/js/controls.js"></script>
 @endpush
