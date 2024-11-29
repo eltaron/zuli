@@ -15,7 +15,6 @@
                                         onclick="window.location.href=`<?php echo htmlspecialchars(url('/product/show/' . $pp->id)); ?>`">
                                     <div class="overlay">
                                         <h3>{{ $pp->title }}</h3>
-                                        <p>{{ $pp->description }}</p>
                                         @if (isset($pp->offer[0]))
                                             @foreach ($pp->offer as $v)
                                                 @if (strtotime($v->end_at) > strtotime(date('Y-m-d')))

@@ -75,7 +75,6 @@
                                         onclick="window.location.href=`<?php echo htmlspecialchars(url('/product/show/' . $pp->id)); ?>`">
                                     <div class="overlay">
                                         <h3>{{ $pp->title }}</h3>
-                                        <p>{{ $pp->description }}</p>
                                         @if (isset($pp->offer[0]))
                                             @foreach ($pp->offer as $v)
                                                 @if (strtotime($v->end_at) > strtotime(date('Y-m-d')))
@@ -146,7 +145,6 @@
                                             loading="lazy" onclick="window.location.href=`<?php echo htmlspecialchars(url('/product/show/' . $ff->product->id)); ?>`">
                                         <div class="overlay">
                                             <h3>{{ $ff->product->title }}</h3>
-                                            <p>{{ $ff->product->description }}</p>
                                             <h4>{{ $ff->new_price }}$ <sub
                                                     class="text-danger"><del>{{ $ff->product->price }}$</del></sub></h4>
                                             <!-- Wishlist and Cart Buttons -->
@@ -183,7 +181,6 @@
                                             loading="lazy" onclick="window.location.href=`<?php echo htmlspecialchars(url('/product/show/' . $po->id)); ?>`">
                                         <div class="overlay">
                                             <h3>{{ $po->title }}</h3>
-                                            <p>{{ $po->description }}</p>
                                             @if (isset($po->offer[0]))
                                                 @foreach ($po->offer as $v)
                                                     @if (strtotime($v->end_at) > strtotime(date('Y-m-d')))

@@ -43,15 +43,19 @@
                         @foreach ($orderDetails as $detail)
                             <tr>
                                 <td>
-                                    <img width="50" height="50" class="rounded-circle"
+                                    <img width="150" height="150" class="rounded-circle"
                                         src="{{ env('APP_URL') . '/storage/' . $detail->product->image }}" alt=""
                                         loading="lazy" onclick="window.location.href=`<?php echo htmlspecialchars(url('/product/show/' . $detail->product->id)); ?>`">
-                                    {{ $detail->product->title }}
+
                                 </td>
                                 <td>${{ number_format($detail->price, 2) }}</td>
                                 <td>{{ $detail->quantity }}</td>
                                 <td>${{ number_format($detail->price * $detail->quantity, 2) }}</td>
                                 <td>
+                                    <h5>{{ $detail->product->title }}</h5>
+                                    <p class="rounded">
+                                        ${{ number_format($detail->price, 2) }}
+                                    </p>
                                     @if ($order->status != 'pending')
                                         <a href="{{ $detail->product->url }}" target="_blank"
                                             class="btn btn-light btn-sm">View Product</a>

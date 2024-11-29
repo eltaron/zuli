@@ -15,7 +15,6 @@
                                         loading="lazy" onclick="window.location.href=`<?php echo htmlspecialchars(url('/product/show/' . $ff->product->id)); ?>`">
                                     <div class="overlay">
                                         <h3>{{ $ff->product->title }}</h3>
-                                        <p>{{ $ff->product->description }}</p>
                                         <h4>{{ $ff->new_price }}$ <sub
                                                 class="text-danger"><del>{{ $ff->product->price }}$</del></sub></h4>
                                         <!-- Wishlist and Cart Buttons -->

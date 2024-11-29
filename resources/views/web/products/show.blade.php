@@ -17,6 +17,10 @@
         .add-to-wishlist i {
             color: #ad2525
         }
+
+        select.rounded {
+            background-color: transparent !important
+        }
     </style>
 @endpush
 @section('content')
@@ -24,14 +28,14 @@
         <section id="Products" class="pt-0">
             <div class="container mb-5">
                 <h2 class="main-title text-center mt-2">{{ $title }}</h2>
-                <div class="mainbg">
+                <div class="mainbg" style="background-color: transparent !important">
                     <div class="row">
-                        <div class="col-md-5">
-                            <img style="border-radius: 30px" src="{{ env('APP_URL') . '/storage/' . $product->image }}"
+                        <div class="col-md-6">
+                            <img style="border-radius: 10px" src="{{ env('APP_URL') . '/storage/' . $product->image }}"
                                 width="100%" alt="">
                         </div>
-                        <div class="col-md-7">
-                            <h2>{{ $product->title }}</h2>
+                        <div class="col-md-6">
+                            <h1>{{ $product->title }}</h1>
                             <h6 class="text-muted">
                                 @if ($product->offer)
                                     ${{ $product->offer->new_price }} <sub
@@ -42,11 +46,15 @@
                             </h6>
                             <hr>
                             @if ($product->description)
-                                <h2>Description:</h2>
                                 <p>
                                     {{ $product->description }}
                                 </p>
+                                <hr>
                             @endif
+                            <h4>Lisence :</h4>
+                            <select name="" class="rounded form-control bg-dark text-white quantity-input mt-3">
+                                <option value="">pro</option>
+                            </select>
                             <div class="buttons align-items-center d-flex m-0 mt-5 justify-content-between">
                                 <button class="btn btn-light add-to-cart" data-id="{{ $product->id }}">Add to
                                     Cart</button>

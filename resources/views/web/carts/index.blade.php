@@ -4,6 +4,24 @@
         .table-striped>tbody>tr:nth-of-type(odd)>* {
             color: #fff !important
         }
+
+        p.rounded {
+            border: 1px solid #fff !important;
+            border-radius: 50px !important;
+            width: fit-content;
+            margin: 10px 0;
+            padding: 5px 15px
+        }
+
+        input.rounded,
+        select.rounded {
+            border-radius: 50px !important;
+        }
+
+        table img {
+            box-shadow: 0px 8px 15px rgba(255, 255, 255, 0.2) !important;
+            margin-top: 20px
+        }
     </style>
 @endpush
 @section('content')
@@ -11,38 +29,31 @@
         <div class="container my-5">
             <h1 class="text-center mb-4">Shopping Cart</h1>
             <div class="table-responsive">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th class="text-center">Actions</th>
-                        </tr>
-                    </thead>
+                <table class="table">
                     <tbody>
                         @forelse ($carts as $i => $item)
                             <tr>
-                                <td>{{ $i + 1 }}</td>
-                                <td>
-                                    <img src="{{ env('APP_URL') . '/storage/' . $item->product->image }}" width="50"
-                                        height="50" class="rounded-circle" alt="" loading="lazy"
+                                <td class="w-75">
+                                    <img src="{{ env('APP_URL') . '/storage/' . $item->product->image }}" width="150"
+                                        height="150" class="rounded" alt="" loading="lazy"
                                         onclick="window.location.href=`<?php echo htmlspecialchars(url('/product/show/' . $item->product->id)); ?>`">
-                                    {{ $item->product->title }}
                                 </td>
-                                <td>${{ $item->product->offer ? $item->product->offer->new_price : $item->product->price }}
-                                </td>
-                                <td>
-                                    <input type="number" class="form-control bg-dark text-white quantity-input"
+                                <td class="w-25">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="m-0">{{ $item->product->title }}</h5>
+                                        <button class="btn  remove-from-cart" data-id="{{ $item->product->id }}"><i
+                                                class="fa-solid text-danger fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <p class="rounded">
+                                        ${{ $item->product->offer ? $item->product->offer->new_price : $item->product->price }}
+                                    </p>
+                                    <input type="number" class="rounded form-control bg-dark text-white quantity-input"
                                         data-id="{{ $item->product->id }}" value="{{ $item->quantity }}" min="1">
-                                </td>
-                                <td>${{ ($item->product->offer ? $item->product->offer->new_price : $item->product->price) * $item->quantity }}
-                                </td>
-                                <td class="text-center">
-                                    <button class="btn btn-danger btn-sm remove-from-cart"
-                                        data-id="{{ $item->product->id }}">Remove</button>
+                                    <select name=""
+                                        class="rounded form-control bg-dark text-white quantity-input mt-3">
+                                        <option value="">pro</option>
+                                    </select>
                                 </td>
                             </tr>
                         @empty
